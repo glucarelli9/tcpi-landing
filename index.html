@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TC&PI Abogados — Propuestas de Diseño</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#F4F5F7;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+header{text-align:center;margin-bottom:3.5rem}
+.logo{font-size:2.2rem;font-weight:800;letter-spacing:4px;color:#1A2E4A;margin-bottom:.4rem}
+.logo .amp{color:#C4963A}
+.firm{color:#6B7280;font-size:.95rem;letter-spacing:.5px;margin-bottom:.6rem}
+.tagline{color:#9CA3AF;font-size:.82rem;letter-spacing:.5px}
+.versions{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.75rem;max-width:760px;width:100%}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.07);text-decoration:none;display:block;transition:transform .22s,box-shadow .22s}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 40px rgba(0,0,0,.12)}
+.preview{height:210px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem}
+.preview-v1{background:linear-gradient(135deg,#0C1A2E 0%,#1A3050 100%)}
+.preview-v2{background:#fff;border-bottom:1px solid #E5E7EB}
+.prev-logo{font-size:2.8rem;font-weight:900;letter-spacing:5px}
+.preview-v1 .prev-logo{color:#C4963A}
+.preview-v2 .prev-logo{color:#1A2E4A}
+.prev-sub{font-size:.65rem;letter-spacing:6px;text-transform:uppercase}
+.preview-v1 .prev-sub{color:rgba(245,240,232,.5)}
+.preview-v2 .prev-sub{color:#9CA3AF}
+.prev-lines{display:flex;flex-direction:column;gap:5px;align-items:center;margin-top:.25rem}
+.preview-v1 .prev-line{background:rgba(196,150,58,.3);border-radius:2px}
+.preview-v2 .prev-line{background:#E5E7EB;border-radius:2px}
+.prev-line{height:4px}
+.prev-line:nth-child(1){width:120px}
+.prev-line:nth-child(2){width:80px}
+.prev-line:nth-child(3){width:100px}
+.body{padding:1.5rem 1.75rem 1.75rem}
+.swatches{display:flex;gap:7px;margin-bottom:.85rem}
+.sw{width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+.card-title{font-size:1.05rem;font-weight:700;color:#1A2E4A;margin-bottom:.4rem}
+.card-desc{color:#6B7280;font-size:.875rem;line-height:1.6;margin-bottom:1.25rem}
+.btn{display:inline-block;padding:.6rem 1.4rem;border-radius:7px;font-size:.83rem;font-weight:600;letter-spacing:.3px}
+.btn-v1{background:#C4963A;color:#fff}
+.btn-v2{background:#1A2E4A;color:#fff}
+.note{margin-top:2.5rem;color:#9CA3AF;font-size:.78rem;text-align:center;letter-spacing:.3px}
+@media(max-width:480px){.versions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">TC<span class="amp">&amp;</span>PI</div>
+  <div class="firm">Torino, Cornejo &amp; Pereyra Iraola — Abogados</div>
+  <div class="tagline">Propuestas de diseño para el sitio web · 2026</div>
+</header>
+
+<div class="versions">
+  <a href="v1/index.html" class="card">
+    <div class="preview preview-v1">
+      <div class="prev-logo">TC<span style="color:#E8C96A">&amp;</span>PI</div>
+      <div class="prev-sub">Abogados</div>
+      <div class="prev-lines">
+        <div class="prev-line"></div>
+        <div class="prev-line"></div>
+        <div class="prev-line"></div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="swatches">
+        <div class="sw" style="background:#0C1A2E"></div>
+        <div class="sw" style="background:#C4963A"></div>
+        <div class="sw" style="background:#F5F0E8"></div>
+      </div>
+      <div class="card-title">Versión Clásica</div>
+      <p class="card-desc">Diseño oscuro y elegante. Transmite prestigio, solidez y trayectoria. Ideal para clientes corporativos de alto perfil.</p>
+      <span class="btn btn-v1">Ver versión →</span>
+    </div>
+  </a>
+
+  <a href="v2/index.html" class="card">
+    <div class="preview preview-v2">
+      <div class="prev-logo">TC<span style="color:#C4963A">&amp;</span>PI</div>
+      <div class="prev-sub" style="color:#9CA3AF">Abogados</div>
+      <div class="prev-lines">
+        <div class="prev-line"></div>
+        <div class="prev-line"></div>
+        <div class="prev-line"></div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="swatches">
+        <div class="sw" style="background:#fff;border:1px solid #D1D5DB"></div>
+        <div class="sw" style="background:#1A2E4A"></div>
+        <div class="sw" style="background:#C4963A"></div>
+      </div>
+      <div class="card-title">Versión Moderna</div>
+      <p class="card-desc">Diseño limpio y contemporáneo. Proyecta una imagen dinámica e internacional, ideal para atraer nuevos clientes.</p>
+      <span class="btn btn-v2">Ver versión →</span>
+    </div>
+  </a>
+</div>
+
+<p class="note">Ambas versiones incluyen toggle Español / English · Responsive para mobile</p>
+</body>
+</html>
