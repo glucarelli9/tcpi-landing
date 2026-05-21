@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -285,6 +285,46 @@ footer{background:var(--navy3);padding:2.5rem 2rem;text-align:center}
   .team-grid{grid-template-columns:repeat(2,1fr)}
   nav{padding:0 1.25rem}
 }
+
+/* ── THEME BUTTON ── */
+.theme-btn{
+  background:none;border:1px solid var(--border);color:var(--muted);
+  width:32px;height:32px;padding:0;border-radius:6px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.theme-btn:hover{color:var(--navy);border-color:var(--navy)}
+
+/* ── DARK MODE ── */
+html[data-theme="dark"]{
+  --white:#0E1925;--off:#131E2C;--off2:#192538;
+  --text:#E5E2DC;--muted:#8A96A5;--light:#6B7A88;--border:rgba(255,255,255,.09);
+}
+html[data-theme="dark"] body{background:var(--white);color:var(--text)}
+html[data-theme="dark"] nav{background:rgba(14,25,37,.97)}
+html[data-theme="dark"] .nav-logo{color:var(--text)}
+html[data-theme="dark"] .nav-links a{color:rgba(229,226,220,.5)}
+html[data-theme="dark"] .nav-links a:hover{color:var(--text)}
+html[data-theme="dark"] .nav-links a::after{background:var(--gold2)}
+html[data-theme="dark"] .sec-title{color:var(--text)}
+html[data-theme="dark"] .hero-left{background:var(--white)}
+html[data-theme="dark"] .about-text{color:var(--muted)}
+html[data-theme="dark"] .stat{background:var(--off);box-shadow:none}
+html[data-theme="dark"] .area{background:var(--white);border-color:rgba(255,255,255,.07)}
+html[data-theme="dark"] .area:hover{border-color:var(--navy);background:var(--off)}
+html[data-theme="dark"] .member{background:var(--off);box-shadow:none;border-color:rgba(255,255,255,.07)}
+html[data-theme="dark"] .m-role.associate{background:rgba(255,255,255,.06);color:rgba(229,226,220,.5)}
+html[data-theme="dark"] .client:hover{background:var(--off)}
+html[data-theme="dark"] .lang-toggle{background:rgba(255,255,255,.06)}
+html[data-theme="dark"] .lang-btn.active{background:rgba(255,255,255,.12);color:var(--text);box-shadow:none}
+html[data-theme="dark"] .c-icon-wrap{background:var(--off);border-color:rgba(255,255,255,.08)}
+html[data-theme="dark"] .c-icon-wrap svg{color:rgba(229,226,220,.65)}
+html[data-theme="dark"] .c-detail{color:var(--muted)}
+html[data-theme="dark"] .c-detail strong{color:var(--text)}
+html[data-theme="dark"] .c-detail a{color:var(--muted)}
+html[data-theme="dark"] .back-btn{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.1)}
+html[data-theme="dark"] .back-btn:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+html[data-theme="dark"] .theme-btn{border-color:rgba(255,255,255,.09);color:rgba(255,255,255,.45)}
+html[data-theme="dark"] .theme-btn:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
@@ -306,6 +346,7 @@ footer{background:var(--navy3);padding:2.5rem 2rem;text-align:center}
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
+    <button id="themeBtn" class="theme-btn" onclick="toggleTheme()"></button>
   </div>
 </nav>
 
@@ -631,6 +672,28 @@ const countObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.count').forEach(el => countObs.observe(el));
+
+// Theme toggle
+const BULB_OFF = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 006 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>`;
+const BULB_ON  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 006 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2v2M4.93 4.93l1.41 1.41M2 12h2M20 12h2M19.07 4.93l-1.41 1.41"/></svg>`;
+function updateThemeBtn() {
+  const isLight = document.documentElement.dataset.theme !== 'dark';
+  const btn = document.getElementById('themeBtn');
+  if (!btn) return;
+  btn.innerHTML = isLight ? BULB_ON : BULB_OFF;
+  btn.title = isLight ? 'Modo oscuro' : 'Modo claro';
+}
+function toggleTheme() {
+  const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('tcpi-theme', t);
+  updateThemeBtn();
+}
+(function() {
+  const saved = localStorage.getItem('tcpi-theme');
+  if (saved) document.documentElement.dataset.theme = saved;
+  updateThemeBtn();
+})();
 </script>
 </body>
 </html>
