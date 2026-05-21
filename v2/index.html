@@ -14,7 +14,43 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--white);color:var(--text);line-height:1.6}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--white);color:var(--text);line-height:1.6;animation:pageIn .4s ease both}
+
+/* ── PROGRESS BAR ── */
+#progress{position:fixed;top:0;left:0;height:2px;width:0%;z-index:999;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .1s linear}
+
+/* ── PAGE ENTRANCE ── */
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes revealClip{from{clip-path:inset(0 0 100% 0);transform:translateY(8px)}to{clip-path:inset(0 0 0% 0);transform:translateY(0)}}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleUp{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes expandLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── HERO ENTRANCE ── */
+.hero-tag{animation:fadeUp .6s ease .1s both}
+.hero-title{animation:revealClip .85s cubic-bezier(.16,1,.3,1) .25s both}
+.hero-sub{animation:fadeUp .6s ease .45s both}
+.hero-actions{animation:fadeUp .6s ease .65s both}
+.hero-right{animation:slideFromRight .8s cubic-bezier(.16,1,.3,1) .15s both}
+.emblem-logo{animation:scaleUp .7s cubic-bezier(.16,1,.3,1) .5s both}
+.emblem-divider{width:50px;height:2px;background:var(--gold2);margin:1rem auto;transform-origin:left;animation:expandLine .5s ease .75s both}
+.hero-badge-item{animation:fadeUp .5s ease .9s both}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+/* ── STAT TOP ACCENT ── */
+.stat{position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.stat:hover::before{transform:scaleX(1)}
+
+/* ── NAV LINK UNDERLINE ── */
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--navy);transition:width .25s ease}
+.nav-links a:hover::after{width:100%}
 
 /* NAV */
 nav{
@@ -253,6 +289,8 @@ footer{background:var(--navy3);padding:2.5rem 2rem;text-align:center}
 </head>
 <body>
 
+<div id="progress"></div>
+
 <nav>
   <a href="#hero" class="nav-logo">TC<span class="amp">&amp;</span>PI</a>
   <ul class="nav-links">
@@ -313,19 +351,19 @@ footer{background:var(--navy3);padding:2.5rem 2rem;text-align:center}
       </div>
       <div class="about-stats">
         <div class="stat">
-          <div class="stat-n"><span>+</span>15</div>
+          <div class="stat-n"><span class="pre">+</span><span class="count" data-target="15">0</span></div>
           <div class="stat-l" data-es="Años de trayectoria" data-en="Years of experience">Años de trayectoria</div>
         </div>
         <div class="stat">
-          <div class="stat-n">10</div>
+          <div class="stat-n"><span class="count" data-target="10">0</span></div>
           <div class="stat-l" data-es="Ciudades en la red" data-en="Cities in our network">Ciudades en la red</div>
         </div>
         <div class="stat">
-          <div class="stat-n">11</div>
+          <div class="stat-n"><span class="count" data-target="11">0</span></div>
           <div class="stat-l" data-es="Áreas de práctica" data-en="Practice areas">Áreas de práctica</div>
         </div>
         <div class="stat">
-          <div class="stat-n">5</div>
+          <div class="stat-n"><span class="count" data-target="5">0</span></div>
           <div class="stat-l" data-es="Profesionales del equipo" data-en="Legal professionals">Profesionales del equipo</div>
         </div>
       </div>
@@ -553,25 +591,46 @@ function setLang(lang) {
 
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
-  nav.style.boxShadow = window.scrollY > 60
-    ? '0 1px 16px rgba(0,0,0,.1)' : 'none';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 1px 16px rgba(0,0,0,.1)' : 'none';
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop || document.body.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
 });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = 1;
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
+const delays = ['d1','d2','d3','d4','d5'];
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 
-document.querySelectorAll('.area, .member, .stat, .client').forEach(el => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(18px)';
-  el.style.transition = 'opacity .45s ease, transform .45s ease';
-  observer.observe(el);
+document.querySelectorAll('.sec-tag, .sec-title, .about-text, .net-card').forEach(el => {
+  el.classList.add('reveal');
+  revealObs.observe(el);
 });
+document.querySelectorAll('.area, .member, .stat, .client, .c-item').forEach((el, i) => {
+  el.classList.add('reveal', delays[i % 5]);
+  revealObs.observe(el);
+});
+
+function countUp(el) {
+  const target = +el.dataset.target;
+  const duration = 1800;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { countUp(e.target); countObs.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.count').forEach(el => countObs.observe(el));
 </script>
 </body>
 </html>
