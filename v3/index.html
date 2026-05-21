@@ -291,15 +291,25 @@ section{padding:7rem 2rem}
 }
 
 .brand{
-  display:inline-flex;align-items:center;gap:.6rem;
-  white-space:nowrap;padding:.6rem 1.4rem;
-  border:1px solid rgba(255,255,255,.1);border-radius:100px;
-  font-size:.8rem;font-weight:500;letter-spacing:.3px;
-  color:rgba(255,255,255,.55);transition:all .25s;cursor:default;
-  user-select:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  white-space:nowrap;padding:.55rem 1.2rem;
+  background:rgba(255,255,255,.92);border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  transition:all .25s;cursor:default;user-select:none;
+  min-width:90px;min-height:44px;
 }
-.brand:hover{border-color:var(--gold);color:var(--gold2);background:rgba(192,144,32,.06)}
-.brand-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.5;flex-shrink:0}
+.brand:hover{background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translateY(-2px)}
+.logo-img{
+  height:26px;width:auto;max-width:100px;
+  object-fit:contain;
+  filter:grayscale(.15) opacity(.85);
+  transition:filter .25s;display:block;
+}
+.brand:hover .logo-img{filter:none;opacity:1}
+.logo-fallback{
+  font-size:.72rem;color:#374151;font-weight:600;
+  letter-spacing:.2px;line-height:1.3;text-align:center;display:none;
+}
 
 /* ── CONTACT ── */
 #contacto{background:#F3F4F6}
@@ -577,55 +587,54 @@ footer{
     <!-- ROW 1 — izquierda -->
     <div class="marquee-row">
       <div class="marquee-track" id="row1">
-        <!-- items duplicados para loop infinito -->
-        <span class="brand"><span class="brand-dot"></span>Banco Galicia</span>
-        <span class="brand"><span class="brand-dot"></span>Banco Supervielle</span>
-        <span class="brand"><span class="brand-dot"></span>Tarjeta Naranja</span>
-        <span class="brand"><span class="brand-dot"></span>VISA — Prisma Medios de Pago</span>
-        <span class="brand"><span class="brand-dot"></span>Flybondi</span>
-        <span class="brand"><span class="brand-dot"></span>Holcim S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Syngenta Agro S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Hotel Sheraton Salta</span>
-        <span class="brand"><span class="brand-dot"></span>SRK Consulting Argentina</span>
-        <span class="brand"><span class="brand-dot"></span>Laboratorios Bagó S.A.</span>
-        <!-- duplicate -->
-        <span class="brand"><span class="brand-dot"></span>Banco Galicia</span>
-        <span class="brand"><span class="brand-dot"></span>Banco Supervielle</span>
-        <span class="brand"><span class="brand-dot"></span>Tarjeta Naranja</span>
-        <span class="brand"><span class="brand-dot"></span>VISA — Prisma Medios de Pago</span>
-        <span class="brand"><span class="brand-dot"></span>Flybondi</span>
-        <span class="brand"><span class="brand-dot"></span>Holcim S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Syngenta Agro S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Hotel Sheraton Salta</span>
-        <span class="brand"><span class="brand-dot"></span>SRK Consulting Argentina</span>
-        <span class="brand"><span class="brand-dot"></span>Laboratorios Bagó S.A.</span>
+        <span class="brand"><img src="https://logo.clearbit.com/galicia.com.ar" alt="Banco Galicia" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Banco Galicia</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/supervielle.com.ar" alt="Banco Supervielle" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Banco Supervielle</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/naranja.com.ar" alt="Tarjeta Naranja" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Tarjeta Naranja</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/visa.com" alt="VISA" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">VISA</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/flybondi.com" alt="Flybondi" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Flybondi</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/holcim.com" alt="Holcim" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Holcim S.A.</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/syngenta.com" alt="Syngenta" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Syngenta Agro</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/sheraton.com" alt="Sheraton" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Hotel Sheraton</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/srk.com" alt="SRK Consulting" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">SRK Consulting</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/bago.com.ar" alt="Laboratorios Bagó" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Lab. Bagó</span></span>
+        <!-- duplicate para loop -->
+        <span class="brand"><img src="https://logo.clearbit.com/galicia.com.ar" alt="Banco Galicia" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Banco Galicia</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/supervielle.com.ar" alt="Banco Supervielle" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Banco Supervielle</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/naranja.com.ar" alt="Tarjeta Naranja" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Tarjeta Naranja</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/visa.com" alt="VISA" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">VISA</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/flybondi.com" alt="Flybondi" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Flybondi</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/holcim.com" alt="Holcim" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Holcim S.A.</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/syngenta.com" alt="Syngenta" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Syngenta Agro</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/sheraton.com" alt="Sheraton" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Hotel Sheraton</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/srk.com" alt="SRK Consulting" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">SRK Consulting</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/bago.com.ar" alt="Laboratorios Bagó" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Lab. Bagó</span></span>
       </div>
     </div>
 
     <!-- ROW 2 — derecha -->
     <div class="marquee-row">
       <div class="marquee-track rev" id="row2">
-        <span class="brand"><span class="brand-dot"></span>Laboratorios Montpellier S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Pago Fácil</span>
-        <span class="brand"><span class="brand-dot"></span>Andina Motors S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Jacobs Holding</span>
-        <span class="brand"><span class="brand-dot"></span>GRUPO ECIPSA</span>
-        <span class="brand"><span class="brand-dot"></span>Cardif Cía. de Seguros</span>
-        <span class="brand"><span class="brand-dot"></span>El Surco Seguros S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Argentina Resources S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Eurofrancia S.A. — Peugeot</span>
-        <span class="brand"><span class="brand-dot"></span>Fiani Automotores — Nissan</span>
-        <!-- duplicate -->
-        <span class="brand"><span class="brand-dot"></span>Laboratorios Montpellier S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Pago Fácil</span>
-        <span class="brand"><span class="brand-dot"></span>Andina Motors S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Jacobs Holding</span>
-        <span class="brand"><span class="brand-dot"></span>GRUPO ECIPSA</span>
-        <span class="brand"><span class="brand-dot"></span>Cardif Cía. de Seguros</span>
-        <span class="brand"><span class="brand-dot"></span>El Surco Seguros S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Argentina Resources S.A.</span>
-        <span class="brand"><span class="brand-dot"></span>Eurofrancia S.A. — Peugeot</span>
-        <span class="brand"><span class="brand-dot"></span>Fiani Automotores — Nissan</span>
+        <span class="brand"><img src="https://logo.clearbit.com/montpellier.com.ar" alt="Laboratorios Montpellier" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Lab. Montpellier</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/pagofacil.net" alt="Pago Fácil" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Pago Fácil</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/andinamotors.com.ar" alt="Andina Motors" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Andina Motors</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/jacobs.com" alt="Jacobs" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Jacobs Holding</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/ecipsa.com" alt="ECIPSA" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">GRUPO ECIPSA</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/cardif.com" alt="Cardif" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Cardif Seguros</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/elsurco.com.ar" alt="El Surco Seguros" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">El Surco Seguros</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/argentinaresources.com" alt="Argentina Resources" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Argentina Resources</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Peugeot</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/nissan.com" alt="Nissan" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Nissan</span></span>
+        <!-- duplicate para loop -->
+        <span class="brand"><img src="https://logo.clearbit.com/montpellier.com.ar" alt="Laboratorios Montpellier" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Lab. Montpellier</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/pagofacil.net" alt="Pago Fácil" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Pago Fácil</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/andinamotors.com.ar" alt="Andina Motors" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Andina Motors</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/jacobs.com" alt="Jacobs" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Jacobs Holding</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/ecipsa.com" alt="ECIPSA" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">GRUPO ECIPSA</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/cardif.com" alt="Cardif" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Cardif Seguros</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/elsurco.com.ar" alt="El Surco Seguros" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">El Surco Seguros</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/argentinaresources.com" alt="Argentina Resources" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Argentina Resources</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/peugeot.com" alt="Peugeot" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Peugeot</span></span>
+        <span class="brand"><img src="https://logo.clearbit.com/nissan.com" alt="Nissan" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback">Nissan</span></span>
       </div>
     </div>
   </div>
