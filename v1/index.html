@@ -157,14 +157,32 @@ section{padding:6rem 2rem}
 .m-spec{font-size:.78rem;color:var(--gray);font-family:system-ui,sans-serif}
 
 /* CLIENTS */
-#clientes{background:var(--dark)}
-.clients-wrap{display:flex;flex-wrap:wrap;gap:.85rem}
-.client{
-  border:1px solid var(--border);color:var(--gray);
-  padding:.45rem 1.1rem;font-family:system-ui,sans-serif;
-  font-size:.8rem;letter-spacing:.3px;transition:all .2s;
+#clientes{background:var(--dark);overflow:hidden}
+.ticker-wrap{position:relative;overflow:hidden;margin-top:.5rem}
+.ticker-wrap::before,.ticker-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none;
 }
-.client:hover{border-color:var(--gold);color:var(--gold)}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--dark) 0%,transparent 100%)}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--dark) 0%,transparent 100%)}
+.ticker-row{display:flex;margin-bottom:1.4rem;overflow:hidden}
+.ticker-inner{
+  display:flex;align-items:center;white-space:nowrap;
+  animation:ticker-fwd 42s linear infinite;
+  will-change:transform;
+}
+.ticker-row--rev .ticker-inner{animation:ticker-rev 48s linear infinite}
+.ticker-row:hover .ticker-inner{animation-play-state:paused}
+.tname{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(1.5rem,3.2vw,2.3rem);
+  font-weight:700;color:var(--gray);
+  padding:0 1.8rem;cursor:default;
+  transition:color .2s;letter-spacing:.3px;
+}
+.tname:hover{color:var(--gold)}
+.tsep{color:var(--gold);opacity:.3;font-size:1.4rem;flex-shrink:0;padding:0 .1rem}
+@keyframes ticker-fwd{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes ticker-rev{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 
 /* CONTACT */
 #contacto{background:var(--dark2)}
@@ -418,27 +436,55 @@ html[data-theme="light"] footer{background:#DDD5C4}
     <div class="sec-label" data-es="Confían en nosotros" data-en="Who trusts us">Confían en nosotros</div>
     <h2 class="sec-title" data-es="Clientes Destacados" data-en="Notable Clients">Clientes Destacados</h2>
     <div class="gold-bar"></div>
-    <div class="clients-wrap">
-      <div class="client">Banco Galicia</div>
-      <div class="client">Banco Supervielle</div>
-      <div class="client">Tarjeta Naranja</div>
-      <div class="client">VISA — Prisma Medios de Pago</div>
-      <div class="client">Flybondi</div>
-      <div class="client">Holcim S.A.</div>
-      <div class="client">Syngenta Agro S.A.</div>
-      <div class="client">Hotel Sheraton Salta</div>
-      <div class="client">SRK Consulting Argentina</div>
-      <div class="client">Laboratorios Bagó S.A.</div>
-      <div class="client">Laboratorios Montpellier S.A.</div>
-      <div class="client">Pago Fácil</div>
-      <div class="client">Andina Motors S.A.</div>
-      <div class="client">Jacobs Holding</div>
-      <div class="client">GRUPO ECIPSA</div>
-      <div class="client">Cardif Cía. de Seguros</div>
-      <div class="client">El Surco Seguros S.A.</div>
-      <div class="client">Argentina Resources S.A.</div>
-      <div class="client">Eurofrancia S.A. — Peugeot</div>
-      <div class="client">Fiani Automotores — Nissan</div>
+    <div class="ticker-wrap">
+      <div class="ticker-row">
+        <div class="ticker-inner">
+          <span class="tname">Banco Galicia</span><span class="tsep">·</span>
+          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
+          <span class="tname">Tarjeta Naranja</span><span class="tsep">·</span>
+          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
+          <span class="tname">Flybondi</span><span class="tsep">·</span>
+          <span class="tname">Holcim S.A.</span><span class="tsep">·</span>
+          <span class="tname">Syngenta Agro</span><span class="tsep">·</span>
+          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
+          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
+          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
+          <span class="tname">Banco Galicia</span><span class="tsep">·</span>
+          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
+          <span class="tname">Tarjeta Naranja</span><span class="tsep">·</span>
+          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
+          <span class="tname">Flybondi</span><span class="tsep">·</span>
+          <span class="tname">Holcim S.A.</span><span class="tsep">·</span>
+          <span class="tname">Syngenta Agro</span><span class="tsep">·</span>
+          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
+          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
+          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
+        </div>
+      </div>
+      <div class="ticker-row ticker-row--rev">
+        <div class="ticker-inner">
+          <span class="tname">Laboratorios Montpellier</span><span class="tsep">·</span>
+          <span class="tname">Pago Fácil</span><span class="tsep">·</span>
+          <span class="tname">Andina Motors</span><span class="tsep">·</span>
+          <span class="tname">Jacobs Holding</span><span class="tsep">·</span>
+          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
+          <span class="tname">Cardif Cía. de Seguros</span><span class="tsep">·</span>
+          <span class="tname">El Surco Seguros</span><span class="tsep">·</span>
+          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
+          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
+          <span class="tname">Fiani — Nissan</span><span class="tsep">·</span>
+          <span class="tname">Laboratorios Montpellier</span><span class="tsep">·</span>
+          <span class="tname">Pago Fácil</span><span class="tsep">·</span>
+          <span class="tname">Andina Motors</span><span class="tsep">·</span>
+          <span class="tname">Jacobs Holding</span><span class="tsep">·</span>
+          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
+          <span class="tname">Cardif Cía. de Seguros</span><span class="tsep">·</span>
+          <span class="tname">El Surco Seguros</span><span class="tsep">·</span>
+          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
+          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
+          <span class="tname">Fiani — Nissan</span><span class="tsep">·</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -543,7 +589,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.area, .member, .stat, .client').forEach(el => {
+document.querySelectorAll('.area, .member, .stat').forEach(el => {
   el.style.opacity = 0;
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity .5s ease, transform .5s ease';
