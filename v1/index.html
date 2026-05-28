@@ -134,6 +134,7 @@ section{padding:6rem 2rem}
   margin-top:.5rem;
 }
 .area{background:var(--dark);padding:2rem 1.75rem;transition:background .25s}
+.areas-wrap::after{content:'';background:var(--dark)}
 .area:hover{background:var(--dark3)}
 .area-ico{width:38px;height:38px;color:var(--gold);margin-bottom:1rem}
 .area-name{
@@ -144,16 +145,24 @@ section{padding:6rem 2rem}
 
 /* TEAM */
 #equipo{background:var(--dark2)}
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:2.5rem}
-.member{text-align:center}
-.avatar{
-  width:88px;height:88px;border-radius:50%;background:var(--dark3);
-  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
-  margin:0 auto 1rem;font-size:1.35rem;font-weight:700;color:var(--gold);
-  font-family:Georgia,serif;
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.member{
+  text-align:center;
+  border:1px solid var(--border);border-top:3px solid var(--gold);
+  background:var(--dark);padding:2.2rem 1.5rem 1.8rem;
+  transition:background .25s,border-color .25s;
 }
-.m-name{font-size:.9rem;font-weight:600;color:var(--cream);margin-bottom:.2rem;font-family:system-ui,sans-serif}
-.m-role{font-size:.7rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:system-ui,sans-serif;margin-bottom:.2rem}
+.member:hover{background:var(--dark3);border-color:var(--gold)}
+.avatar{
+  width:80px;height:80px;border-radius:50%;background:var(--dark3);
+  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;font-size:1.25rem;font-weight:700;color:var(--gold);
+  font-family:Georgia,serif;transition:background .25s;
+}
+.member:hover .avatar{background:var(--dark2)}
+.m-name{font-size:.9rem;font-weight:600;color:var(--cream);margin-bottom:.35rem;font-family:system-ui,sans-serif;line-height:1.3}
+.m-role{font-size:.67rem;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:system-ui,sans-serif;margin-bottom:.5rem}
+.m-sep{width:28px;height:1px;background:var(--border);margin:.6rem auto}
 .m-spec{font-size:.78rem;color:var(--gray);font-family:system-ui,sans-serif}
 
 /* CLIENTS */
@@ -400,30 +409,35 @@ html[data-theme="light"] footer{background:#DDD5C4}
         <div class="avatar">AT</div>
         <div class="m-name">Arturo Sebastián Torino</div>
         <div class="m-role" data-es="Socio" data-en="Partner">Socio</div>
+        <div class="m-sep"></div>
         <div class="m-spec" data-es="Derecho Laboral" data-en="Labor Law">Derecho Laboral</div>
       </div>
       <div class="member">
         <div class="avatar">CP</div>
         <div class="m-name">Cristóbal Pereyra Iraola</div>
         <div class="m-role" data-es="Socio" data-en="Partner">Socio</div>
+        <div class="m-sep"></div>
         <div class="m-spec" data-es="Derecho Comercial" data-en="Commercial Law">Derecho Comercial</div>
       </div>
       <div class="member">
         <div class="avatar">SC</div>
         <div class="m-name">Santiago Cornejo Colombres</div>
         <div class="m-role" data-es="Socio" data-en="Partner">Socio</div>
+        <div class="m-sep"></div>
         <div class="m-spec" data-es="Societario y Tributario" data-en="Corporate &amp; Tax">Societario y Tributario</div>
       </div>
       <div class="member">
         <div class="avatar">SG</div>
         <div class="m-name">Sofía García Barberá</div>
         <div class="m-role" data-es="Asociada" data-en="Associate">Asociada</div>
+        <div class="m-sep"></div>
         <div class="m-spec" data-es="Minero y Ambiental" data-en="Mining &amp; Environmental">Minero y Ambiental</div>
       </div>
       <div class="member">
         <div class="avatar">AP</div>
         <div class="m-name">Agustina Belén Pojasi</div>
         <div class="m-role" data-es="Asociada" data-en="Associate">Asociada</div>
+        <div class="m-sep"></div>
         <div class="m-spec" data-es="Litigios" data-en="Litigation">Litigios</div>
       </div>
     </div>
