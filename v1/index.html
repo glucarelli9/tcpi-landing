@@ -72,6 +72,14 @@ nav{
   letter-spacing:8px;color:var(--cream);line-height:1;margin-bottom:.4rem;
 }
 .hero-logo .amp{color:var(--gold)}
+.hero-logo-wrap{
+  background:#fff;padding:.55rem 2rem .4rem;display:inline-block;
+  border-radius:5px;margin-bottom:1.5rem;
+  box-shadow:0 4px 28px rgba(0,0,0,.22);
+}
+.hero-logo-wrap .hero-logo{color:#111;margin-bottom:0}
+.hero-logo-wrap .amp{color:#1A56A0!important}
+html[data-theme="light"] .hero-logo-wrap{background:rgba(255,255,255,.85)}
 .hero-firm{
   font-size:clamp(.65rem,1.8vw,.9rem);letter-spacing:5px;
   color:var(--gray);text-transform:uppercase;
@@ -171,19 +179,20 @@ section{padding:6rem 2rem}
 }
 .ticker-wrap::before{left:0;background:linear-gradient(to right,var(--dark) 0%,transparent 100%)}
 .ticker-wrap::after{right:0;background:linear-gradient(to left,var(--dark) 0%,transparent 100%)}
-.ticker-row{display:flex;margin-bottom:1.4rem;overflow:hidden}
+.ticker-row{display:flex;margin-bottom:1rem;overflow:hidden}
 .ticker-inner{
   display:flex;align-items:center;white-space:nowrap;
   animation:ticker-fwd 42s linear infinite;
   will-change:transform;
 }
-.ticker-row--rev .ticker-inner{animation:ticker-rev 48s linear infinite}
+.ticker-row--rev .ticker-inner{animation:ticker-rev 50s linear infinite}
+.ticker-row--slow .ticker-inner{animation:ticker-fwd 60s linear infinite}
 .ticker-row:hover .ticker-inner{animation-play-state:paused}
 .tname{
   font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(1.5rem,3.2vw,2.3rem);
+  font-size:clamp(1rem,2vw,1.6rem);
   font-weight:700;color:var(--gray);
-  padding:0 1.8rem;cursor:default;
+  padding:0 1.4rem;cursor:default;
   transition:color .2s;letter-spacing:.3px;
 }
 .tname:hover{color:var(--gold)}
@@ -273,7 +282,9 @@ html[data-theme="light"] footer{background:#DDD5C4}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-badge" data-es="Estudio Jurídico · Salta, Argentina" data-en="Law Firm · Salta, Argentina">Estudio Jurídico · Salta, Argentina</div>
-  <div class="hero-logo">TC<span class="amp">&amp;</span>PI</div>
+  <div class="hero-logo-wrap">
+    <div class="hero-logo">TC<span class="amp">&amp;</span>PI</div>
+  </div>
   <div class="hero-firm" data-es="Torino, Cornejo &amp; Pereyra Iraola — Abogados" data-en="Torino, Cornejo &amp; Pereyra Iraola — Attorneys at Law">Torino, Cornejo &amp; Pereyra Iraola — Abogados</div>
   <div class="hero-sep"></div>
   <h1 class="hero-title" data-es="Asesoramiento Jurídico de Excelencia" data-en="Excellence in Legal Counsel">Asesoramiento Jurídico de Excelencia</h1>
@@ -298,20 +309,12 @@ html[data-theme="light"] footer{background:#DDD5C4}
       </div>
       <div class="about-stats">
         <div class="stat">
-          <div class="stat-n">+15</div>
+          <div class="stat-n">+25</div>
           <div class="stat-l" data-es="Años de trayectoria" data-en="Years of experience">Años de trayectoria</div>
         </div>
         <div class="stat">
           <div class="stat-n">10</div>
           <div class="stat-l" data-es="Ciudades en la red" data-en="Cities in our network">Ciudades en la red</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">11</div>
-          <div class="stat-l" data-es="Áreas de práctica" data-en="Practice areas">Áreas de práctica</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">5</div>
-          <div class="stat-l" data-es="Profesionales del equipo" data-en="Legal professionals">Profesionales del equipo</div>
         </div>
       </div>
     </div>
@@ -392,6 +395,12 @@ html[data-theme="light"] footer{background:#DDD5C4}
         <div class="area-desc" data-es="Permisos ambientales, certificados de aptitud, áreas protegidas y gestión de aguas." data-en="Environmental permits, compliance certificates, protected areas and water management.">Permisos ambientales, certificados de aptitud, áreas protegidas y gestión de aguas.</div>
       </div>
 
+      <div class="area">
+        <svg class="area-ico" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"/></svg>
+        <div class="area-name" data-es="Migraciones" data-en="Immigration">Migraciones</div>
+        <div class="area-desc" data-es="Gestión y acompañamiento en trámites de residencias y trámites migratorios." data-en="Management and support for residency applications and immigration proceedings.">Gestión y acompañamiento en trámites de residencias y trámites migratorios.</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -415,28 +424,35 @@ html[data-theme="light"] footer{background:#DDD5C4}
         <div class="m-name">Cristóbal Pereyra Iraola</div>
         <div class="m-role" data-es="Socio" data-en="Partner">Socio</div>
         <div class="m-sep"></div>
-        <div class="m-spec" data-es="Derecho Comercial" data-en="Commercial Law">Derecho Comercial</div>
+        <div class="m-spec" data-es="Derecho Comercial, Societario y Minero" data-en="Commercial, Corporate &amp; Mining Law">Derecho Comercial, Societario y Minero</div>
       </div>
       <div class="member">
         <div class="avatar">SC</div>
         <div class="m-name">Santiago Cornejo Colombres</div>
         <div class="m-role" data-es="Socio" data-en="Partner">Socio</div>
         <div class="m-sep"></div>
-        <div class="m-spec" data-es="Societario y Tributario" data-en="Corporate &amp; Tax">Societario y Tributario</div>
+        <div class="m-spec" data-es="Derecho Comercial, Societario y Minero" data-en="Commercial, Corporate &amp; Mining Law">Derecho Comercial, Societario y Minero</div>
       </div>
       <div class="member">
         <div class="avatar">SG</div>
         <div class="m-name">Sofía García Barberá</div>
         <div class="m-role" data-es="Asociada" data-en="Associate">Asociada</div>
         <div class="m-sep"></div>
-        <div class="m-spec" data-es="Minero y Ambiental" data-en="Mining &amp; Environmental">Minero y Ambiental</div>
+        <div class="m-spec" data-es="Defensa del Consumidor y Litigios" data-en="Consumer Protection &amp; Litigation">Defensa del Consumidor y Litigios</div>
       </div>
       <div class="member">
         <div class="avatar">AP</div>
         <div class="m-name">Agustina Belén Pojasi</div>
         <div class="m-role" data-es="Asociada" data-en="Associate">Asociada</div>
         <div class="m-sep"></div>
-        <div class="m-spec" data-es="Litigios" data-en="Litigation">Litigios</div>
+        <div class="m-spec" data-es="Defensa del Consumidor y Litigios" data-en="Consumer Protection &amp; Litigation">Defensa del Consumidor y Litigios</div>
+      </div>
+      <div class="member">
+        <div class="avatar">FA</div>
+        <div class="m-name">Fátima Aguierre Cruz</div>
+        <div class="m-role" data-es="Asociada" data-en="Associate">Asociada</div>
+        <div class="m-sep"></div>
+        <div class="m-spec" data-es="Defensa del Consumidor" data-en="Consumer Protection">Defensa del Consumidor</div>
       </div>
     </div>
   </div>
@@ -452,48 +468,52 @@ html[data-theme="light"] footer{background:#DDD5C4}
       <div class="ticker-row">
         <div class="ticker-inner">
           <span class="tname">Banco Galicia</span><span class="tsep">·</span>
-          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
           <span class="tname">Tarjeta Naranja</span><span class="tsep">·</span>
-          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
           <span class="tname">Flybondi</span><span class="tsep">·</span>
           <span class="tname">Holcim S.A.</span><span class="tsep">·</span>
           <span class="tname">Syngenta Agro</span><span class="tsep">·</span>
-          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
-          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
-          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
+          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
+          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
           <span class="tname">Banco Galicia</span><span class="tsep">·</span>
-          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
           <span class="tname">Tarjeta Naranja</span><span class="tsep">·</span>
-          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
           <span class="tname">Flybondi</span><span class="tsep">·</span>
           <span class="tname">Holcim S.A.</span><span class="tsep">·</span>
           <span class="tname">Syngenta Agro</span><span class="tsep">·</span>
-          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
-          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
-          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
+          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
+          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
         </div>
       </div>
       <div class="ticker-row ticker-row--rev">
         <div class="ticker-inner">
-          <span class="tname">Laboratorios Montpellier</span><span class="tsep">·</span>
+          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
+          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
+          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
+          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
           <span class="tname">Pago Fácil</span><span class="tsep">·</span>
           <span class="tname">Andina Motors</span><span class="tsep">·</span>
+          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
+          <span class="tname">Banco Supervielle</span><span class="tsep">·</span>
+          <span class="tname">VISA — Prisma</span><span class="tsep">·</span>
+          <span class="tname">Hotel Sheraton Salta</span><span class="tsep">·</span>
+          <span class="tname">SRK Consulting</span><span class="tsep">·</span>
+          <span class="tname">Pago Fácil</span><span class="tsep">·</span>
+          <span class="tname">Andina Motors</span><span class="tsep">·</span>
+          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
+        </div>
+      </div>
+      <div class="ticker-row ticker-row--slow">
+        <div class="ticker-inner">
+          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
+          <span class="tname">Laboratorios Montpellier</span><span class="tsep">·</span>
           <span class="tname">Jacobs Holding</span><span class="tsep">·</span>
-          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
           <span class="tname">Cardif Cía. de Seguros</span><span class="tsep">·</span>
           <span class="tname">El Surco Seguros</span><span class="tsep">·</span>
-          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
-          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
           <span class="tname">Fiani — Nissan</span><span class="tsep">·</span>
+          <span class="tname">Laboratorios Bagó</span><span class="tsep">·</span>
           <span class="tname">Laboratorios Montpellier</span><span class="tsep">·</span>
-          <span class="tname">Pago Fácil</span><span class="tsep">·</span>
-          <span class="tname">Andina Motors</span><span class="tsep">·</span>
           <span class="tname">Jacobs Holding</span><span class="tsep">·</span>
-          <span class="tname">GRUPO ECIPSA</span><span class="tsep">·</span>
           <span class="tname">Cardif Cía. de Seguros</span><span class="tsep">·</span>
           <span class="tname">El Surco Seguros</span><span class="tsep">·</span>
-          <span class="tname">Argentina Resources</span><span class="tsep">·</span>
-          <span class="tname">Eurofrancia — Peugeot</span><span class="tsep">·</span>
           <span class="tname">Fiani — Nissan</span><span class="tsep">·</span>
         </div>
       </div>
