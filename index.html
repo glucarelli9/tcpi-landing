@@ -41,14 +41,6 @@ nav{
   font-family:system-ui,sans-serif;font-size:.72rem;letter-spacing:1.5px;
 }
 .lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--dark);font-weight:700}
-.back-btn{
-  color:var(--gray);text-decoration:none;font-family:system-ui,sans-serif;
-  font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;
-  border:1px solid var(--border);padding:.25rem .8rem;border-radius:3px;
-  transition:all .2s;
-}
-.back-btn:hover{color:var(--gold);border-color:var(--gold)}
-
 /* HERO */
 #hero{
   min-height:100vh;display:flex;flex-direction:column;
@@ -279,7 +271,6 @@ html[data-theme="light"] .nav-logo span{color:#1A56A0}
     <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
   </ul>
   <div class="nav-right">
-    <a href="../index.html" class="back-btn">← Versiones</a>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
